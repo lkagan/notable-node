@@ -6,8 +6,18 @@ const getNotes = function () {
 
 const addNote = function (title, body) {
     const notes = loadNotes();
-    notes.push({ title, body });
-    saveNotes(notes);
+
+    const duplicateNotes = notes.filter((note) => {
+        return note.title === title;
+    });
+
+    if (duplicateNotes.length === 0) {
+        notes.push({ title, body });
+        saveNotes(notes);
+        console.log('New note added.');
+    } else {
+        console.log('Note title already used.');
+    }
 }
 
 const saveNotes = function (notes) {
