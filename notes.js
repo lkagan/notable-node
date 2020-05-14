@@ -21,13 +21,9 @@ const addNote = function (title, body) {
 }
 
 const removeNote = function (title) {
-    const notes =  loadNotes();
-
-    for (let note of notes) {
-        if (note.title === title) {
-            console.log('Removing note: ' + title);
-        }
-    }
+    let notes =  loadNotes();
+    notes = notes.filter(note => note.title !== title);
+    saveNotes(notes);
 }
 
 const saveNotes = function (notes) {
