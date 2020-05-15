@@ -1,8 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = () => "Your notes...";
-
 const addNote = (title, body) => {
     const notes = loadNotes();
     const duplicateNote = notes.find((note) => note.title === title);
@@ -17,7 +15,7 @@ const addNote = (title, body) => {
 }
 
 const removeNote = title => {
-    let notes =  loadNotes();
+    const notes =  loadNotes();
     const notesToKeep = notes.filter(note => note.title !== title);
 
     if (notes.length !== notesToKeep.length) {
@@ -69,7 +67,6 @@ const readNote = title => {
 }
 
 module.exports = {
-    getNotes,
     addNote,
     removeNote,
     listNotes,
