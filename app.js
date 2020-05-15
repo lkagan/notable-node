@@ -42,17 +42,24 @@ yargs.command({
 
 yargs.command({
     command: 'list',
-    describe: 'List a note',
+    describe: 'List notes',
     handler() {
-        console.log('Listing notes');
+        notes.listNotes();
     }
 });
 
 yargs.command({
     command: 'read',
     describe: 'Read a note',
-    handler() {
-        console.log('Read a note');
+    builder: {
+        title: {
+            describe: 'Note title',
+            demdnOption: true,
+            type: 'string',
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title);
     }
 });
 
